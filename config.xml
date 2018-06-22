@@ -56,7 +56,7 @@
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-sqlite-evcore-extbuild-free" />
     <plugin name="cordova-plugin-contacts" spec="~3.0.1" />
-    <plugin name="cordova-plugin-contacts-phone-numbers" spec="~0.0.10" />
+    <plugin name="cordova-plugin-contacts-phonenumbers" spec="~0.0.10" />
     <plugin name="cordova-plugin-call-number" spec="~1.0.1" />
     <plugin name="cordova-plugin-facebook4" spec="~2.1.0">
         <variable name="APP_ID" value="2068144450174015" />
