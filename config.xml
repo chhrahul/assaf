@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.app8200.callrecording" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>8200 Call Recording</name>
+    <description>
+        8200 Call Recording App.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <icon density="ldpi" src="res/icon/android/ldpi.png" />
+        <icon density="mdpi" src="res/icon/android/mdpi.png" />
+        <icon density="hdpi" src="res/icon/android/hdpi.png" />
+        <icon density="xhdpi" src="res/icon/android/xhdpi.png" />
+        <icon density="xxhdpi" src="res/icon/android/xxhdpi.png" />
+        <icon density="xxxhdpi" src="res/icon/android/xxxhdpi.png" />
+        <allow-intent href="market:*" />
+        <config-file parent="/resources" target="./res/values/strings.xml">
+            <string name="fb_app_id">2068144450174015</string>
+            <string name="fb_app_name">sociallogin</string>
+        </config-file>
+    </platform>
+    <platform name="ios">
+        <icon height="1024" src="res/icon/ios/icon-1024.png" width="1024" />
+        <icon height="29" src="res/icon/ios/icon-small.png" width="29" />
+        <icon height="58" src="res/icon/ios/icon-small@2x.png" width="58" />
+        <icon height="87" src="res/icon/ios/icon-small@3x.png" width="87" />
+        <icon height="40" src="res/icon/ios/icon-small-40.png" width="40" />
+        <icon height="80" src="res/icon/ios/icon-small-40@2x.png" width="80" />
+        <icon height="120" src="res/icon/ios/icon-small-40@3x.png" width="120" />
+        <icon height="50" src="res/icon/ios/icon-small-50.png" width="50" />
+        <icon height="100" src="res/icon/ios/icon-small-50@2x.png" width="100" />
+        <icon height="57" src="res/icon/ios/icon.png" width="57" />
+        <icon height="114" src="res/icon/ios/icon@2x.png" width="114" />
+        <icon height="60" src="res/icon/ios/icon-60.png" width="60" />
+        <icon height="120" src="res/icon/ios/icon-60@2x.png" width="120" />
+        <icon height="180" src="res/icon/ios/icon-60@3x.png" width="180" />
+        <icon height="72" src="res/icon/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/icon/ios/icon-72@2x.png" width="144" />
+        <icon height="76" src="res/icon/ios/icon-76.png" width="76" />
+        <icon height="152" src="res/icon/ios/icon-76@2x.png" width="152" />
+        <icon height="167" src="res/icon/ios/icon-167.png" width="167" />
+        <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167" />
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <preference name="android-minSdkVersion" value="16" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="cordova-sqlite-storage" spec="~2.3.2" />
+    <plugin name="cordova-plugin-contacts" spec="~3.0.1" />
+    <plugin name="com.dbaq.cordova.contactsPhoneNumbers" spec="~0.0.10" />
+    <plugin name="cordova-plugin-call-number" spec="~1.0.1" />
+    <plugin name="cordova-plugin-facebook4" spec="~2.1.0">
+        <variable name="APP_ID" value="2068144450174015" />
+        <variable name="APP_NAME" value="sociallogin" />
+    </plugin>
+    <plugin name="cordova-plugin-googleplus" spec="https://github.com/EddyVerbruggen/cordova-plugin-googleplus">
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.456465654656-uer0h33q4e6i9naucntft3i6mbqfsusi" />
+    </plugin>
+    <engine name="android" spec="^7.0.0" />
+</widget>
