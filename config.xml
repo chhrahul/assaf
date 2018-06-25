@@ -62,7 +62,7 @@
      <plugin name="cordova-plugin-contacts" spec="~3.0.1" />
    <plugin name="cordova-plugin-contacts-phonenumbers" spec="~0.0.10" />
 
-
+    <plugin name="cordova-android-support-gradle-release" spec="~1.4.4" />
     <plugin name="cordova-plugin-facebook4" spec="~2.1.0">
         <variable name="APP_ID" value="2068144450174015" />
         <variable name="APP_NAME" value="sociallogin" />
