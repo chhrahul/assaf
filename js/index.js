@@ -85,7 +85,7 @@ function onError(result) {
         alert('Table already created ' + error.message);
       }, function() {
         alert('Table created OK');
-      }); */
+      }); 
 //alert('here') 
 CordovaFacebook.login({
    permissions: ['email', 'user_likes'],
@@ -102,7 +102,7 @@ CordovaFacebook.login({
          alert("There was an error:" + result.errorLocalized);
       }
    }
-});
+});*/
 
        /* 
         var fbLoginSuccess = function (userData) {
