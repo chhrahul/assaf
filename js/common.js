@@ -515,7 +515,151 @@ function enforcePhoneNumberPattern(string) {
 
 
 
+function fillineverything() {
+    var db = null;
+    db = window.sqlitePlugin.openDatabase({
+        name: "my.db",
+        location: 'default'
+    });
+    db.transaction(function(tx) {
+        tx.executeSql('SELECT * FROM sign_up_language', [], function(tx, results) {
+            var len = results.rows.length,
+                i;
+            for (i = 0; i < len; i++) {
+                // alert(results.rows.item(i).language_key );
+                if (results.rows.item(i).language_key == 'title') {
+                    $('#signup_font').html(results.rows.item(i).language_value);
+                }
+                if (results.rows.item(i).language_key == 'sign_up_with') {
+                    $('#sign_up_with').html(results.rows.item(i).language_value);
+                }
+                if (results.rows.item(i).language_key == 'sign_in_with') {
+                    $('#sign_up_with_email').html(results.rows.item(i).language_value);
+                }
 
+                if (results.rows.item(i).language_key == 'email') {
+                    $('#register-email').attr('placeholder', results.rows.item(i).language_value);
+                }
+
+                if (results.rows.item(i).language_key == 'first_name') {
+                    $('#register-fname').attr('placeholder', results.rows.item(i).language_value);
+                }
+
+                if (results.rows.item(i).language_key == 'password') {
+                    $('#signup-password').attr('placeholder', results.rows.item(i).language_value);
+                }
+
+                if (results.rows.item(i).language_key == 'sign_up_button') {
+                    $('#signmeup').val(results.rows.item(i).language_value);
+                    $("#signinup").html(results.rows.item(i).language_value);
+
+                }
+
+
+
+                if (results.rows.item(i).language_key == 'tos') {
+                    $('#tossignup').html(results.rows.item(i).language_value);
+                }
+
+
+
+
+                // alert(results.rows.item(i).language_value ); 
+            }
+            //alert('sign_up_language: ' + rs.rows.item(0).mycount);
+
+        });
+        tx.executeSql('SELECT * FROM sign_in_language', [], function(tx, results) {
+            var len = results.rows.length,
+                i;
+            for (i = 0; i < len; i++) {
+                // alert(results.rows.item(i).language_key );
+                if (results.rows.item(i).language_key == 'email') {
+                    $('#login-email').attr('placeholder', results.rows.item(i).language_value);
+                    $('#forgot-email').attr('placeholder', results.rows.item(i).language_value);
+
+                    ///alert(results.rows.item(i).language_value)
+                }
+                if (results.rows.item(i).language_key == 'title') {
+                    $('#signuploginbutton').html(results.rows.item(i).language_value);
+                    $('#signmein').val(results.rows.item(i).language_value);
+                }
+                if (results.rows.item(i).language_key == 'password') {
+                    $('#login-password').attr('placeholder', results.rows.item(i).language_value);
+                }
+
+                if (results.rows.item(i).language_key == 'tos') {
+                    $('#tossignin').html(results.rows.item(i).language_value);
+                }
+                if (results.rows.item(i).language_key == 'forgot_your_password') {
+                    $('#forgotpwd').html(results.rows.item(i).language_value);
+                }
+                if (results.rows.item(i).language_key == 'forgot_your_password_recover') {
+                    $('#forgot_title').html(results.rows.item(i).language_value);
+                }
+
+
+
+
+            }
+        });
+        tx.executeSql('SELECT * FROM footer_language', [], function(tx, results) {
+            var len = results.rows.length,
+                i;
+            for (i = 0; i < len; i++) {
+                // alert(results.rows.item(i).language_key );
+                if (results.rows.item(i).language_key == 'call') {
+                    $('#footer_call').html(results.rows.item(i).language_value);
+                    //alert(results.rows.item(i).language_value)
+                }
+
+                if (results.rows.item(i).language_key == 'call_logs') {
+                    $('#footer_calllog').html(results.rows.item(i).language_value);
+                }
+
+                if (results.rows.item(i).language_key == 'contacts') {
+                    $('#footer_contacts').html(results.rows.item(i).language_value);
+                }
+
+                if (results.rows.item(i).language_key == 'settings') {
+                    $('#footer_settings').html(results.rows.item(i).language_value);
+                }
+            }
+        });
+        tx.executeSql('SELECT * FROM dialer_language', [], function(tx, results) {
+            var len = results.rows.length,
+                i;
+            for (i = 0; i < len; i++) {
+                // alert(results.rows.item(i).language_key );
+                if (results.rows.item(i).language_key == 'dialing') {
+                    //$('#phone_string').attr('placeholder',results.rows.item(i).language_value);
+                    //alert(results.rows.item(i).language_value)
+                }
+
+                if (results.rows.item(i).language_key == 'enter_number_to_display') {
+                    $('#phone_string_2').attr('placeholder', results.rows.item(i).language_value);
+                    //alert(results.rows.item(i).language_value)
+                }
+
+            }
+        });
+        tx.executeSql('SELECT * FROM settings_language', [], function(tx, results) {
+            var len = results.rows.length,
+                i;
+            for (i = 0; i < len; i++) {
+
+                if (results.rows.item(i).language_key == 'phone_number') {
+                    $('#account-phone').attr('placeholder', results.rows.item(i).language_value);
+                }
+
+                if (results.rows.item(i).language_key == 'mail') {
+                    $('#account-email').attr('placeholder', results.rows.item(i).language_value);
+                }
+
+            }
+        });
+    });
+}
 
 
 
