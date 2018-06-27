@@ -24,7 +24,9 @@
         </config-file>
     </platform>
     <platform name="ios">
-        
+        <edit-config target="NSContactsUsageDescription" file="*-Info.plist" mode="merge">
+    <string>need contacts access to search contacts</string>
+</edit-config>
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
