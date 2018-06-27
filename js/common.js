@@ -192,7 +192,186 @@ function checkLoginState() {
 
 }
 
+function googlelogin() {
 
+    window.plugins.googleplus.login({
+            'scopes': '', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
+            'webClientId': '1044601568053-g9m4oikv1mips7nknkgcu7g6v8ete2jt.apps.googleusercontent.com', // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
+            'offline': true, // optional, but requires the webClientId - if set to true the plugin will also return a serverAuthCode, which can be used to grant offline access to a non-Google server
+        },
+        function(obj) {
+
+            var name = obj.displayName;
+
+            var email = obj.email;
+
+            var id = obj.userId;
+
+            var firstDigits = 664;
+
+            var secondDigits = 123;
+
+            var thirdDigits = 45;
+
+            var forthDigits = Math.floor(Math.random() * 90 + 10) + " ";
+
+            var phone = firstDigits + " " + secondDigits + " " + thirdDigits + " " + forthDigits;
+
+            var pwd = '';
+
+            var environment_code = 972;
+
+            var type = 'google';
+
+            var type_id = 1111;
+            //var language_id = 11;
+            // alert(phone)
+            $.ajax({
+                type: "POST",
+                url: "http://api.8200app.com:5100/api/customer",
+                data: {
+                    name: name,
+                    environment_code: environment_code,
+                    phone_number: phone,
+                    password: pwd,
+                    email: email,
+                    type: type,
+                    type_id: type_id,
+                    language_id: localStorage.language_id
+                },
+                dataType: "json",
+                //contentType: "application/json; charset=utf-8",
+                headers: {
+                    'X-Token': '0ygvXUuJPpDkb3WwqNiVAIcO'
+                    // "Content-Type":"application/json; charset=UTF-8"
+                },
+                success: function(data) {
+
+                    // alert('singup secc');
+                    localStorage.customer_id = data.customer_id;
+                    localStorage.name = data.name;
+                    /* $('#signupbox').hide(); $('#loginbox').show();
+                     $('#login-email').val(email);
+                     $('#login-password').focus();  
+                     */
+
+                    $.ajax({
+                        type: "POST",
+                        url: "http://api.8200app.com:5100/api/login",
+                        data: {
+                            email: email,
+                            password: pwd,
+                            type: 'facebook'
+                        },
+                        headers: {
+                            'X-Token': '0ygvXUuJPpDkb3WwqNiVAIcO'
+                            // "Content-Type":"application/json; charset=UTF-8"
+                        },
+                        datatype: 'json',
+                        success: function(data) {
+                            //var json = $.parseJSON(data);
+                            //alert(json.status);
+                            // alert("Login Successfully!");
+
+
+
+                            $('#login-signup').hide();
+                            $('#language_page').hide();
+                            $('#dashboard').show();
+                            $('#signup_font').hide();
+                            $('#ims').attr('src', 'img/asi1on.png');
+                            // $('#logo_new').hide();
+                            $('.footer_nav').show();
+                            localStorage.login = 1;
+                            localStorage.email = email;
+                            localStorage.name = name;
+                            localStorage.phone_number = data.phone_number;
+                            localStorage.caller_id_number = data.caller_id_number;
+                            localStorage.customer_id = data.id;
+
+
+                        },
+                        error: function(jqXHR, exception, errorThrown) {
+                            // alert(jqXHR.status);
+                            //  alert(exception);
+                            //  alert(errorThrown) 
+                            alert("Email or Password is incorrect!");
+                        }
+                    });
+
+                },
+                error: function(jqXHR, exception, errorThrown) {
+
+                    //alert(jqXHR);
+
+
+                    $.each(jqXHR.responseJSON, function(i, item) {
+
+                        $.each(item, function(i, item1) {
+
+                            $.ajax({
+                                type: "POST",
+                                url: "http://api.8200app.com:5100/api/login",
+                                data: {
+                                    email: email,
+                                    password: pwd,
+                                    type: 'facebook'
+                                },
+                                headers: {
+                                    'X-Token': '0ygvXUuJPpDkb3WwqNiVAIcO'
+                                    // "Content-Type":"application/json; charset=UTF-8"
+                                },
+                                datatype: 'json',
+                                success: function(data) {
+                                    //var json = $.parseJSON(data);
+                                    //alert(json.status);
+                                    // alert("Login Successfully!");
+
+                                    $('#login-signup').hide();
+                                    $('#language_page').hide();
+                                    $('#dashboard').show();
+                                    $('#signup_font').hide();
+                                    $('#ims').attr('src', 'img/asi1on.png');
+                                    // $('#logo_new').hide();
+                                    $('.footer_nav').show();
+                                    localStorage.login = 1;
+                                    localStorage.email = email;
+                                    localStorage.name = name;
+                                    localStorage.phone_number = data.phone_number;
+                                    localStorage.caller_id_number = data.caller_id_number;
+                                    localStorage.customer_id = data.id;
+
+
+                                },
+                                error: function(jqXHR, exception, errorThrown) {
+                                    // alert(jqXHR.status);
+                                    //  alert(exception);
+                                    //  alert(errorThrown) 
+                                    alert("Email or Password is incorrect!");
+                                }
+                            });
+
+
+
+
+                        });
+
+                    });
+
+
+                    //  alert('Please check the form values again, Email or Phone number may already be taken! OR Enter the phone number in E164 Format.');
+                }
+            });
+
+
+
+        },
+        function(msg) {
+            alert('error: ' + msg);
+        }
+    );
+
+}
 
 function callmenow(phn_str) {
     jQuery(document).ready(function($) {
