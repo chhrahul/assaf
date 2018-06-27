@@ -693,6 +693,22 @@ $("#remi_nder").click(function()
          }
      });
      }); 
+
+navigator.contactsPhoneNumbers.list(function(contacts) {
+      jQuery("#list_contacts").html('');
+          //console.log(contacts.length + ' contacts found');
+          for(var i = 0; i < contacts.length; i++) {
+             //alert(contacts[i].id + " - " + contacts[i].displayName);
+             jQuery("#list_contacts").append('<div class="row"  style="border-bottom:1px solid #CECECE;background-color:#FFF;"><div class="text-center col-lg-6 col-md-6 clo-sm-6 col-xs-6" style="height:45px;padding-top:10px;font-size:15px;" ><a  onclick="callmenow_2('+contacts[i].phoneNumbers[0].number+');" href="#">'+contacts[i].displayName+'</a></div><div class="text-center col-lg-6 col-md-6 clo-sm-6 col-xs-6" style="height:45px;padding-top:10px;font-size:15px;"><a onclick="callmenow_2('+contacts[i].phoneNumbers[0].number+');" href="#" >'+contacts[i].phoneNumbers[0].number+'</a></div></div>');
+            
+          }
+          jQuery("#list_contacts").append('<div style="height:30px;">&nbsp;</div>');
+     
+       }, function(error) {
+          console.error(error);
+       });
+
+
 });
 
 $("#foo_settings").click(function()
@@ -2202,7 +2218,7 @@ function Myfunction(idl){
 
 
    
- 
+ /*
   navigator.contactsPhoneNumbers.list(function(contacts) {
       jQuery("#list_contacts").html('');
           //console.log(contacts.length + ' contacts found');
@@ -2215,7 +2231,7 @@ function Myfunction(idl){
      
        }, function(error) {
           console.error(error);
-       });
+       });*/
 
    
      var db = null;
