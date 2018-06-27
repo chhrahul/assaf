@@ -2203,7 +2203,7 @@ function Myfunction(idl){
 
    
  
-  /*navigator.contactsPhoneNumbers.list(function(contacts) {
+  navigator.contactsPhoneNumbers.list(function(contacts) {
       jQuery("#list_contacts").html('');
           //console.log(contacts.length + ' contacts found');
           for(var i = 0; i < contacts.length; i++) {
@@ -2217,7 +2217,7 @@ function Myfunction(idl){
           console.error(error);
        });
 
-    
+    /*
      var db = null;
         db = window.sqlitePlugin.openDatabase({name: "my.db", location: 'default'}); */
 	}
