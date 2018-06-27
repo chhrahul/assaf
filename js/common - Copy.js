@@ -580,7 +580,92 @@ function callmenow_2(phn_str)
        //$('#phone_string').css('border-left','0px solid black');
     });
     
-   
+   /* 
+    $('#ndig_1').click(function(){
+    var existing_field = $('#phone_string_2').val();
+    var new_val = existing_field + '1'; 
+       $('#phone_string_2').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+    
+    $('#ndig_2').click(function(){
+    var existing_field = $('#phone_string_2').val();
+    var new_val = existing_field + '2'; 
+       $('#phone_string_2').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+    
+    $('#ndig_3').click(function(){
+    var existing_field = $('#phone_string_2').val();
+    var new_val = existing_field + '3'; 
+       $('#phone_string_2').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+    
+    $('#ndig_4').click(function(){
+    var existing_field = $('#phone_string_2').val();
+    var new_val = existing_field + '4'; 
+       $('#phone_string_2').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+    
+    $('#ndig_5').click(function(){
+    var existing_field = $('#phone_string_2').val();
+    var new_val = existing_field + '5'; 
+       $('#phone_string_2').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+    
+    $('#ndig_6').click(function(){
+    var existing_field = $('#phone_string_2').val();
+    var new_val = existing_field + '6'; 
+       $('#phone_string_2').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+    
+    $('#dig_7').click(function(){
+    var existing_field = $('#phone_string').val();
+    var new_val = existing_field + '7'; 
+       $('#phone_string').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+    
+    $('#ndig_8').click(function(){
+    var existing_field = $('#phone_string_2').val();
+    var new_val = existing_field + '8'; 
+       $('#phone_string_2').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+    
+    $('#ndig_9').click(function(){
+    var existing_field = $('#phone_string_2').val();
+    var new_val = existing_field + '9'; 
+       $('#phone_string_2').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+    
+     $('#ndig_0').click(function(){
+    var existing_field = $('#phone_string_2').val();
+    var new_val = existing_field + '0'; 
+       $('#phone_string_2').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+    
+    
+    $('#ndig_star').click(function(){
+    var existing_field = $('#phone_string_2').val();
+    var new_val = existing_field + '*'; 
+       $('#phone_string_2').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+    
+    $('#ndig_hash').click(function(){
+    var existing_field = $('#phone_string_2').val();
+    var new_val = existing_field + '#'; 
+       $('#phone_string_2').val(new_val);
+       $('#phone_string_2').css('border-left','0px solid black');
+    });
+       */
     
     $.ajax({
 				type: "POST",
@@ -611,13 +696,19 @@ function callmenow_2(phn_str)
             }		  
 			});
       
-   $("#minus_1").click(function(){
-       $('#phone_string').val($('#phone_string').val().substr(0,$('#phone_string').val().length-1));     
+   $("#minus_1").click(function()
+   {
+       $('#phone_string').val($('#phone_string').val().substr(0,$('#phone_string').val().length-1));
+     //  $('#phone_string').css('border-left','0px solid black');
+     //  $('#phone_string_2').css('border-left','0px solid black');
        
    });   
-  $("#minus_2").click(function(){
+  $("#minus_2").click(function()
+   {
        $('#phone_string_2').val($('#phone_string_2').val().substr(0,$('#phone_string_2').val().length-1));
-     
+       
+      //  $('#phone_string').css('border-left','0px solid black');
+      // $('#phone_string_2').css('border-left','0px solid black');
    }); 
     function onSuccess(result){
   alert("Success:"+result);
@@ -1030,7 +1121,187 @@ $("#pickmesearchicon").click(function(){
     }); 
 });
 
+function googlelogin()
+{
+    window.plugins.googleplus.login(
+    {
+      'scopes': 'profile', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
+      'webClientId': '456465654656-dsr3scb3ecd496iaclmmi85030ip0mbc.apps.googleusercontent.com', // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
+      'offline': true // optional, but requires the webClientId - if set to true the plugin will also return a serverAuthCode, which can be used to grant offline access to a non-Google server
+    },
+    function (obj) {
+      alert(JSON.stringify(obj)); // do something useful instead of alerting
+    },
+    function (msg) {
+      alert('error: ' + msg);
+    }
+);
+}
+ 
 
+
+ function fillineverything()
+ {
+    var db = null;
+        db = window.sqlitePlugin.openDatabase({name: "my.db", location: 'default'});
+    db.transaction(function (tx) {
+    tx.executeSql('SELECT * FROM sign_up_language', [], function(tx, results) {
+               var len = results.rows.length, i;
+                for (i = 0; i < len; i++) { 
+               // alert(results.rows.item(i).language_key );
+               if(results.rows.item(i).language_key == 'title')
+               {
+                  $('#signup_font').html(results.rows.item(i).language_value);
+               }
+               if(results.rows.item(i).language_key == 'sign_up_with')
+               {
+                  $('#sign_up_with').html(results.rows.item(i).language_value);
+               }
+               if(results.rows.item(i).language_key == 'sign_in_with')
+               {
+                  $('#sign_up_with_email').html(results.rows.item(i).language_value);
+               }
+               
+               if(results.rows.item(i).language_key == 'email')
+               {
+                  $('#register-email').attr('placeholder',results.rows.item(i).language_value);
+               }
+               
+               if(results.rows.item(i).language_key == 'first_name')
+               {
+                  $('#register-fname').attr('placeholder',results.rows.item(i).language_value);
+               }
+                              
+               if(results.rows.item(i).language_key == 'password')
+               {
+                  $('#signup-password').attr('placeholder',results.rows.item(i).language_value);
+               }
+               
+               if(results.rows.item(i).language_key == 'sign_up_button')
+               {
+                  $('#signmeup').val(results.rows.item(i).language_value);
+                  $("#signinup").html(results.rows.item(i).language_value);
+                  
+               }
+               
+              
+               
+               if(results.rows.item(i).language_key == 'tos')
+               {
+                  $('#tossignup').html(results.rows.item(i).language_value);
+               }
+               
+               
+               
+               
+               
+               
+               // alert(results.rows.item(i).language_value ); 
+              } 
+               //alert('sign_up_language: ' + rs.rows.item(0).mycount);
+               
+           });
+           tx.executeSql('SELECT * FROM sign_in_language', [], function(tx, results) {
+              var len = results.rows.length, i;
+                for (i = 0; i < len; i++) { 
+               // alert(results.rows.item(i).language_key );
+                 if(results.rows.item(i).language_key == 'email')
+                 {
+                    $('#login-email').attr('placeholder',results.rows.item(i).language_value);
+                    $('#forgot-email').attr('placeholder',results.rows.item(i).language_value);
+                    
+                    ///alert(results.rows.item(i).language_value)
+                 }
+                 if(results.rows.item(i).language_key == 'title')
+               {
+                  $('#signuploginbutton').html(results.rows.item(i).language_value);
+                  $('#signmein').val(results.rows.item(i).language_value);
+               }
+                 if(results.rows.item(i).language_key == 'password')
+                 {
+                    $('#login-password').attr('placeholder',results.rows.item(i).language_value);
+                 }
+                 
+                 if(results.rows.item(i).language_key == 'tos')
+               {
+                  $('#tossignin').html(results.rows.item(i).language_value);
+               }
+               if(results.rows.item(i).language_key == 'forgot_your_password')
+               {
+                  $('#forgotpwd').html(results.rows.item(i).language_value);
+               }
+               if(results.rows.item(i).language_key == 'forgot_your_password_recover')
+               {
+                  $('#forgot_title').html(results.rows.item(i).language_value);
+               }
+               
+               
+               
+               
+               }
+           }); 
+           tx.executeSql('SELECT * FROM footer_language', [], function(tx, results) {
+             var len = results.rows.length, i;
+                for (i = 0; i < len; i++) { 
+               // alert(results.rows.item(i).language_key );
+                 if(results.rows.item(i).language_key == 'call')
+                 {
+                    $('#footer_call').html(results.rows.item(i).language_value);
+                   //alert(results.rows.item(i).language_value)
+                 }
+                 
+                 if(results.rows.item(i).language_key == 'call_logs')
+                 {
+                    $('#footer_calllog').html(results.rows.item(i).language_value);
+                 }
+                 
+                if(results.rows.item(i).language_key == 'contacts')
+               {
+                  $('#footer_contacts').html(results.rows.item(i).language_value);
+               }
+               
+               if(results.rows.item(i).language_key == 'settings')
+               {
+                  $('#footer_settings').html(results.rows.item(i).language_value);
+               }
+               }
+           });
+           tx.executeSql('SELECT * FROM dialer_language', [], function(tx, results) {
+             var len = results.rows.length, i;
+                for (i = 0; i < len; i++) { 
+               // alert(results.rows.item(i).language_key );
+                 if(results.rows.item(i).language_key == 'dialing')
+                 {
+                    //$('#phone_string').attr('placeholder',results.rows.item(i).language_value);
+                   //alert(results.rows.item(i).language_value)
+                 }
+                 
+                 if(results.rows.item(i).language_key == 'enter_number_to_display')
+                 {
+                    $('#phone_string_2').attr('placeholder',results.rows.item(i).language_value);
+                    //alert(results.rows.item(i).language_value)
+                 }
+                 
+               }
+           }); 
+           tx.executeSql('SELECT * FROM settings_language', [], function(tx, results) {
+             var len = results.rows.length, i;
+                for (i = 0; i < len; i++) { 
+                
+                if(results.rows.item(i).language_key == 'phone_number')
+                 {
+                    $('#account-phone').attr('placeholder',results.rows.item(i).language_value);
+                 }
+                 
+                 if(results.rows.item(i).language_key == 'mail')
+                 {
+                    $('#account-email').attr('placeholder',results.rows.item(i).language_value);                    
+                 }
+                 
+               }
+           }); 
+           });
+ }
 
 
 
@@ -1063,7 +1334,24 @@ $("#pickmesearchicon").click(function(){
       $('#signup_font').hide();
   }
   
- 
+  function enforcePhoneNumberPattern(string) {
+  let newString = string.match(/[0-9]{0,14}/g);
+
+  if (newString === null) {
+    return '';
+  }
+
+  // Join parts returned from RegEx match
+  newString = newString.join('');
+
+  // Start number with "+"
+  newString = '+' + newString;
+
+  // Limit length to 15 characters
+  newString = newString.substring(0, 15);
+
+  return newString;
+}
   
   $("#signupform").submit(function(e){
     e.preventDefault();
@@ -1239,192 +1527,217 @@ $("#pickmesearchicon").click(function(){
       } 
           });   
     });
-	
-});
-
- function enforcePhoneNumberPattern(string) {
-  let newString = string.match(/[0-9]{0,14}/g);
-
-  if (newString === null) {
-    return '';
-  }
-
-  // Join parts returned from RegEx match
-  newString = newString.join('');
-
-  // Start number with "+"
-  newString = '+' + newString;
-
-  // Limit length to 15 characters
-  newString = newString.substring(0, 15);
-
-  return newString;
-}
+    
  
+            
+	//date picker
+	jQuery( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+	jQuery("#datepicker").on("change",function(){
+        var datepicker = jQuery(this).val();
+		$("#date_mts").html("<input type='hidden' name='dat_frmt' id='chk_dte' value='"+datepicker+"'>");  
+	});
+	jQuery( "#timepiker" ).timepicker({ 'timeFormat': 'H:i A'});
+	jQuery("#timepiker").on("change",function(){
+        var timepiker = jQuery(this).val();
+		//alert(timepiker);
+		$("#tim_mts").html("<input type='hidden' name='time_frmt' id='chk_time' value='"+timepiker+"'>");  		
+	});
+	
+	$("#task_sv").submit(function(e){
+		e.preventDefault();	
+		var user_email = localStorage.email;
+		$('#use_mil').val(user_email);
+		var use_email = jQuery('#use_mil').val();
+		var task_name = jQuery("#tsk_nm").val();
+		var des_cription = jQuery("#acd_desc").val();
+		var chk_dte = jQuery("#chk_dte").val();
+		var chk_time = jQuery("#chk_time").val();
+		//alert(chk_time);
+		$.ajax({
+            type: "POST",
+            url: "http://myonlinebrain.com.au/api.php",
+            data: {task_names : task_name,desc_cription : des_cription,chk_date: chk_dte, user_email: use_email,task_time: chk_time, func:'Save'},
+            cache: false,
+            datatype: 'json',
+            success: function(data){ 
+			//alert(data);
+              alert("Save Successfully!");
+			  $('#aft_login').show();
+			  $('.hme_wrk').show();
+			  $('.hme_wrk').show();
+			  $('#task_clndr').hide();
+			  $('#tsk_nm').val('');
+			  $('#acd_desc').val('');
+			  $('#datepicker').val('');
+			  $('#timepiker').val('');
+            },
+			error: function (data) {
+				//alert(data);
+				alert("Failure"); 
+			}           
+			
+        });
+		
+	});
+	
+	
+});  
 
+	////on calender date click ////
+	function myFunction(id) {
+			var cl_dt_frmt = $('#set_frmt_time'+id).val();
+			//$("#chk_cld_on").html("<input type='hidden' name='chk_clndr' id='chk_clndr' value='"+cl_dt_frmt+"'>"); 
+			var user_email = localStorage.email;
+			$('#use_mil').val(user_email);
+			var users_email = jQuery('#use_mil').val();
+			$('#day_data').show();
+			$('#time_slot').hide();
+			$.ajax({
+				type: "POST",
+				url: "http://myonlinebrain.com.au/api.php",
+				data: {cl_dt_frmts : cl_dt_frmt, userd_email: users_email, func:'clndr'},
+				cache: false,
+				datatype: 'json',
+				success: function(data){ 
+					var JSONObject = JSON.parse(data);
+					$('#day_data').html('');
+					for (var key in JSONObject) {
+						if (JSONObject.hasOwnProperty(key)) {
+							//alert(JSONObject[key]["name"] + ", " + JSONObject[key]["image"]);
+								var ats = '<li><div class="dys_chk"><div class="chk_tm" id="chktim'+ JSONObject[key]["id"] +'"> '+ JSONObject[key]["task_time"] +' </div><div class="ck_event" id="evntchnge'+ JSONObject[key]["id"] +'"> '+ JSONObject[key]["task_name"] +' </div><div class="ck_evnt_tm" id="discptchnge'+ JSONObject[key]["id"] +'"> '+ JSONObject[key]["task_description"] +' </div></div> <button type="button" class="edit_activty" id="activite'+ JSONObject[key]["id"] +'"onclick= timechne("'+ JSONObject[key]["id"] +'")> Edit </button> <input type="hidden" id="date_pikr'+ JSONObject[key]["id"] +'" value="'+cl_dt_frmt+'" > </li>';
+							//alert(ats);
+							$('#day_data').append(ats);
+						}		
+					}	
+					$("#my_daily").show();
+					$('.mg_titl h1').html('DAY');
+					$("#ck_calndr").hide();
+				},
+				error: function (data) {
+					alert("error, please try again!"); 
+				}           
+				
+			});
+	} 
 
- function fillineverything()
- {
-    var db = null;
-        db = window.sqlitePlugin.openDatabase({name: "my.db", location: 'default'});
-    db.transaction(function (tx) {
-    tx.executeSql('SELECT * FROM sign_up_language', [], function(tx, results) {
-               var len = results.rows.length, i;
-                for (i = 0; i < len; i++) { 
-               // alert(results.rows.item(i).language_key );
-               if(results.rows.item(i).language_key == 'title')
-               {
-                  $('#signup_font').html(results.rows.item(i).language_value);
-               }
-               if(results.rows.item(i).language_key == 'sign_up_with')
-               {
-                  $('#sign_up_with').html(results.rows.item(i).language_value);
-               }
-               if(results.rows.item(i).language_key == 'sign_in_with')
-               {
-                  $('#sign_up_with_email').html(results.rows.item(i).language_value);
-               }
-               
-               if(results.rows.item(i).language_key == 'email')
-               {
-                  $('#register-email').attr('placeholder',results.rows.item(i).language_value);
-               }
-               
-               if(results.rows.item(i).language_key == 'first_name')
-               {
-                  $('#register-fname').attr('placeholder',results.rows.item(i).language_value);
-               }
-                              
-               if(results.rows.item(i).language_key == 'password')
-               {
-                  $('#signup-password').attr('placeholder',results.rows.item(i).language_value);
-               }
-               
-               if(results.rows.item(i).language_key == 'sign_up_button')
-               {
-                  $('#signmeup').val(results.rows.item(i).language_value);
-                  $("#signinup").html(results.rows.item(i).language_value);
-                  
-               }
-               
-              
-               
-               if(results.rows.item(i).language_key == 'tos')
-               {
-                  $('#tossignup').html(results.rows.item(i).language_value);
-               }
-               
-               
-               
-               
-               
-               
-               // alert(results.rows.item(i).language_value ); 
-              } 
-               //alert('sign_up_language: ' + rs.rows.item(0).mycount);
-               
-           });
-           tx.executeSql('SELECT * FROM sign_in_language', [], function(tx, results) {
-              var len = results.rows.length, i;
-                for (i = 0; i < len; i++) { 
-               // alert(results.rows.item(i).language_key );
-                 if(results.rows.item(i).language_key == 'email')
-                 {
-                    $('#login-email').attr('placeholder',results.rows.item(i).language_value);
-                    $('#forgot-email').attr('placeholder',results.rows.item(i).language_value);
-                    
-                    ///alert(results.rows.item(i).language_value)
-                 }
-                 if(results.rows.item(i).language_key == 'title')
-               {
-                  $('#signuploginbutton').html(results.rows.item(i).language_value);
-                  $('#signmein').val(results.rows.item(i).language_value);
-               }
-                 if(results.rows.item(i).language_key == 'password')
-                 {
-                    $('#login-password').attr('placeholder',results.rows.item(i).language_value);
-                 }
-                 
-                 if(results.rows.item(i).language_key == 'tos')
-               {
-                  $('#tossignin').html(results.rows.item(i).language_value);
-               }
-               if(results.rows.item(i).language_key == 'forgot_your_password')
-               {
-                  $('#forgotpwd').html(results.rows.item(i).language_value);
-               }
-               if(results.rows.item(i).language_key == 'forgot_your_password_recover')
-               {
-                  $('#forgot_title').html(results.rows.item(i).language_value);
-               }
-               
-               
-               
-               
-               }
-           }); 
-           tx.executeSql('SELECT * FROM footer_language', [], function(tx, results) {
-             var len = results.rows.length, i;
-                for (i = 0; i < len; i++) { 
-               // alert(results.rows.item(i).language_key );
-                 if(results.rows.item(i).language_key == 'call')
-                 {
-                    $('#footer_call').html(results.rows.item(i).language_value);
-                   //alert(results.rows.item(i).language_value)
-                 }
-                 
-                 if(results.rows.item(i).language_key == 'call_logs')
-                 {
-                    $('#footer_calllog').html(results.rows.item(i).language_value);
-                 }
-                 
-                if(results.rows.item(i).language_key == 'contacts')
-               {
-                  $('#footer_contacts').html(results.rows.item(i).language_value);
-               }
-               
-               if(results.rows.item(i).language_key == 'settings')
-               {
-                  $('#footer_settings').html(results.rows.item(i).language_value);
-               }
-               }
-           });
-           tx.executeSql('SELECT * FROM dialer_language', [], function(tx, results) {
-             var len = results.rows.length, i;
-                for (i = 0; i < len; i++) { 
-               // alert(results.rows.item(i).language_key );
-                 if(results.rows.item(i).language_key == 'dialing')
-                 {
-                    //$('#phone_string').attr('placeholder',results.rows.item(i).language_value);
-                   //alert(results.rows.item(i).language_value)
-                 }
-                 
-                 if(results.rows.item(i).language_key == 'enter_number_to_display')
-                 {
-                    $('#phone_string_2').attr('placeholder',results.rows.item(i).language_value);
-                    //alert(results.rows.item(i).language_value)
-                 }
-                 
-               }
-           }); 
-           tx.executeSql('SELECT * FROM settings_language', [], function(tx, results) {
-             var len = results.rows.length, i;
-                for (i = 0; i < len; i++) { 
-                
-                if(results.rows.item(i).language_key == 'phone_number')
-                 {
-                    $('#account-phone').attr('placeholder',results.rows.item(i).language_value);
-                 }
-                 
-                 if(results.rows.item(i).language_key == 'mail')
-                 {
-                    $('#account-email').attr('placeholder',results.rows.item(i).language_value);                    
-                 }
-                 
-               }
-           }); 
-           });
- }
+	function mfunctions(id){
+		//alert(id);
+		var hlm = $("#mne"+id).html();
+		//alert(hlm);
+		var ht = $("#mne"+id).replaceWith('<div class="rmndr_name"> <input type="text" id="set'+id+'" name="set" value="' + hlm + '"> </div>');
+
+		$('#save'+id).show();
+		$('#radio'+id).hide();
+	}
+
+	function timechne(id){
+		$('#time_slot').show();
+		var ac_id = id;
+		var hlms = $("#chktim"+id).html();
+		var evntchnge = $("#evntchnge"+id).html();
+		var discptchnge = $("#discptchnge"+id).html();
+		$('#day_data').hide();
+		$('#time_slot').html('<div class="activity_main"> <input class="date_updte" type="text" id="timepiker" placeholder="Date" value="'+hlms+'"> <input class="title_updte" type="text" placeholder="Title" value="'+evntchnge+'"> <textarea rows="7" cols="50" name="des_cription" placeholder="Description" class="updte_desc" id="updte_desc'+id+'"> '+discptchnge+' </textarea> <div class="up_date"> <button type="button"  id="als_updt" onclick=acti_updte("'+id+'")> Update </button> </div> </div>')
+	}
+
+	function acti_updte(id){
+		var vr_id = id;
+		var up_date = $('.date_updte').val();
+		var titl_updte = $('.title_updte').val();
+		//var updt_desc = $('#updte_desc'+id).html();
+		var updt_desc = $.trim($('#updte_desc'+id).val());
+		var up_gmail = localStorage.email;
+		$.ajax({
+			type: "POST",
+			url: "http://myonlinebrain.com.au/api.php",
+			data:{vr_ids: vr_id, up_da_te : up_date, titl_up_dte: titl_updte, updt_de_sc: updt_desc, up_gma_il: up_gmail,  func:'update_clndr'},
+			cache: false,
+			datatype: 'json',
+			success: function(data){ 
+				var JSONObject = JSON.parse(data);
+				alert("Update Successfully!");
+				mydete_pikr(id);
+			},
+			error: function (data) {
+				alert("error, please try again!"); 
+			}           
+		});
+	}
+
+	function mydete_pikr(id){
+		var date_pkr = $("#date_pikr"+id).val();
+		//alert(date_pkr);
+		var up_ail = localStorage.email;	
+		$.ajax({
+			type: "POST",
+			url: "http://myonlinebrain.com.au/api.php",
+			data: {cl_dt_frmts : date_pkr, userd_email: up_ail, func:'clndr'},
+			cache: false,
+			datatype: 'json',
+			success: function(data){ 
+				var JSONObject = JSON.parse(data);
+				$('#day_data').html('');
+				for (var key in JSONObject) {
+					if (JSONObject.hasOwnProperty(key)) {
+						//alert(JSONObject[key]["task_name"] + ", " + JSONObject[key]["task_description"]);
+							var ats = '<li><div class="dys_chk"><div class="chk_tm" id="chktim'+ JSONObject[key]["id"] +'"> '+ JSONObject[key]["task_time"] +' </div> <div class="ck_event" id="evntchnge'+ JSONObject[key]["id"] +'"> '+ JSONObject[key]["task_name"] +' </div> <div class="ck_evnt_tm" id="discptchnge'+ JSONObject[key]["id"] +'"> '+ JSONObject[key]["task_description"] +' </div>  </div> <button type="button" class="edit_activty" id="activite'+ JSONObject[key]["id"] +'"onclick= timechne("'+ JSONObject[key]["id"] +'")> Edit </button> <input type="hidden" id="date_pikr'+id+'" value="'+date_pkr+'" > </li>';
+						//alert(ats);
+						$('#day_data').append(ats);
+					}		
+				}	
+				$("#my_daily").show();
+				$('.mg_titl h1').html('DAY');
+				$("#ck_calndr").hide();
+				$('#day_data').show();
+				$("#time_slot").hide();
+			},
+			error: function (data) {
+				alert("error, please try again!"); 
+			}           	
+		});
+	}
+	
+
+	function save(id) {
+		var idl = id;
+		var wek_dy = $("#delt"+id).val();
+		var asst = $("#set"+id).val();
+		var up_ail = localStorage.email;
+		$.ajax({
+			type: "POST",
+			url: "http://myonlinebrain.com.au/api.php",
+			data: {up_idl : idl, updt_ail: up_ail, up_asst: asst, up_wek_dy: wek_dy,  func:'updateweek'},
+			cache: false,
+			datatype: 'json',
+			success: function(data){ 
+				var JSONObject = JSON.parse(data);
+				alert("Update Successfully!");
+				Myfunction(idl);
+			},
+			error: function (data) {
+				alert("error, please try again!"); 
+			}           
+		});
+	}
+
+function myset(){
+	var user_email = localStorage.email;
+	var us_eml = user_email;
+	var st_nbr = $('.str_rmndr').val(); 
+	$('#wek_form').show();	
+		$.ajax({
+			type: "POST",
+			url: "http://myonlinebrain.com.au/api.php",
+			data: {mndy: st_nbr, eml: us_eml, func:'slect_day'},
+			headers: {
+                'X-Token': '0ygvXUuJPpDkb3WwqNiVAIcO'             
+            },
+			datatype: 'json',
+			success: function(data){ 
+				alert(JSON.stringify(data))
+			}			  
+		});
+}
 
 function gotosignup(myval)
 {
@@ -1927,7 +2240,7 @@ function Myfunction(idl){
   }
 
 
- 
+  (function () {
 
   document.addEventListener("deviceready", onDeviceReady, false);
 	function onDeviceReady() {
@@ -1973,7 +2286,33 @@ function Myfunction(idl){
       }
 
 
+    /*window.plugins.googleplus.login(
+    {
+      'scopes': '... ', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
+      'webClientId': '18874712477-cmo2qvghj6l8utrfumublbi3condspke.apps.googleusercontent.com', // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
+      'offline': true // optional, but requires the webClientId - if set to true the plugin will also return a serverAuthCode, which can be used to grant offline access to a non-Google server
+    },
+    function (obj) {
+      alert(JSON.stringify(obj)); // do something useful instead of alerting
+    },
+    function (msg) {
+      alert('error: ' + msg);
+    }
+); 
 
+window.plugins.googleplus.trySilentLogin(
+    {
+      'scopes': '... ', // optional - space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
+      'webClientId': '18874712477-cmo2qvghj6l8utrfumublbi3condspke.apps.googleusercontent.com', // optional - clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
+      'offline': true, // Optional, but requires the webClientId - if set to true the plugin will also return a serverAuthCode, which can be used to grant offline access to a non-Google server
+    },
+    function (obj) {
+      alert(JSON.stringify(obj)); // do something useful instead of alerting
+    },
+    function (msg) {
+      alert('error: ' + msg);
+    }
+);  */
  
   navigator.contactsPhoneNumbers.list(function(contacts) {
       jQuery("#list_contacts").html('');
@@ -1993,5 +2332,5 @@ function Myfunction(idl){
      var db = null;
         db = window.sqlitePlugin.openDatabase({name: "my.db", location: 'default'}); 
 	}
-
+})();
 
