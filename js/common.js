@@ -694,7 +694,7 @@ $("#remi_nder").click(function()
      });
      }); 
 
-navigator.contactsPhoneNumbers.list(function(contacts) {
+/*navigator.contactsPhoneNumbers.list(function(contacts) {
       jQuery("#list_contacts").html('');
           //console.log(contacts.length + ' contacts found');
           for(var i = 0; i < contacts.length; i++) {
@@ -706,7 +706,7 @@ navigator.contactsPhoneNumbers.list(function(contacts) {
      
        }, function(error) {
           console.error(error);
-       });
+       });*/
 
 
 });
