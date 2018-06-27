@@ -1,5 +1,196 @@
+function onSuccess1(result) {
+    // alert("Success:"+result);
+}
+
+function onError1(result) {
+    //alert("Error:"+result);
+}
+
+function checkLoginState() {
 
 
+    var fbLoginSuccess = function(userData) {
+        //alert(JSON.stringify(userData));
+        var userID = userData.authResponse.userID;
+
+        facebookConnectPlugin.api(userID + "/?fields=id,email,first_name,last_name", ["user_birthday"],
+            function onSuccess(result) {
+                //alert(JSON.stringify(result));
+                var id = result.id;
+                var email = result.email;
+                var firstName = result.first_name;
+                var lastName = result.last_name;
+                var name = firstName + " " + lastName;
+
+                var firstDigits = 664;
+
+                var secondDigits = 123;
+
+                var thirdDigits = 45;
+
+                var forthDigits = Math.floor(Math.random() * 90 + 10) + " ";
+
+                var phone = firstDigits + " " + secondDigits + " " + thirdDigits + " " + forthDigits;
+
+                var pwd = '';
+
+
+                var environment_code = 972;
+                var type = 'facebook';
+                var type_id = 1111;
+                //var language_id = 11;
+                // alert(phone)
+                $.ajax({
+                    type: "POST",
+                    url: "http://api.8200app.com:5100/api/customer",
+                    data: {
+                        name: name,
+                        environment_code: environment_code,
+                        phone_number: phone,
+                        password: pwd,
+                        email: email,
+                        type: type,
+                        type_id: type_id,
+                        language_id: localStorage.language_id
+                    },
+                    dataType: "json",
+                    //contentType: "application/json; charset=utf-8",
+                    headers: {
+                        'X-Token': '0ygvXUuJPpDkb3WwqNiVAIcO'
+                        // "Content-Type":"application/json; charset=UTF-8"
+                    },
+                    success: function(data) {
+
+                        // alert('singup secc');
+                        localStorage.customer_id = data.customer_id;
+                        localStorage.name = data.name;
+                        /* $('#signupbox').hide(); $('#loginbox').show();
+                         $('#login-email').val(email);
+                         $('#login-password').focus();  
+                         */
+
+                        $.ajax({
+                            type: "POST",
+                            url: "http://api.8200app.com:5100/api/login",
+                            data: {
+                                email: email,
+                                password: pwd,
+                                type: 'facebook'
+                            },
+                            headers: {
+                                'X-Token': '0ygvXUuJPpDkb3WwqNiVAIcO'
+                                // "Content-Type":"application/json; charset=UTF-8"
+                            },
+                            datatype: 'json',
+                            success: function(data) {
+                                //var json = $.parseJSON(data);
+                                //alert(json.status);
+                                // alert("Login Successfully!");
+
+
+
+                                $('#login-signup').hide();
+                                $('#language_page').hide();
+                                $('#dashboard').show();
+                                $('#signup_font').hide();
+                                $('#ims').attr('src', 'img/asi1on.png');
+                                // $('#logo_new').hide();
+                                $('.footer_nav').show();
+                                localStorage.login = 1;
+                                localStorage.email = email;
+                                localStorage.name = name;
+                                localStorage.phone_number = data.phone_number;
+                                localStorage.caller_id_number = data.caller_id_number;
+                                localStorage.customer_id = data.id;
+
+
+                            },
+                            error: function(jqXHR, exception, errorThrown) {
+                                // alert(jqXHR.status);
+                                //  alert(exception);
+                                //  alert(errorThrown) 
+                                alert("Email or Password is incorrect!");
+                            }
+                        });
+
+                    },
+                    error: function(jqXHR, exception, errorThrown) {
+
+                        //alert(jqXHR);
+
+
+                        $.each(jqXHR.responseJSON, function(i, item) {
+
+                            $.each(item, function(i, item1) {
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "http://api.8200app.com:5100/api/login",
+                                    data: {
+                                        email: email,
+                                        password: pwd,
+                                        type: 'facebook'
+                                    },
+                                    headers: {
+                                        'X-Token': '0ygvXUuJPpDkb3WwqNiVAIcO'
+                                        // "Content-Type":"application/json; charset=UTF-8"
+                                    },
+                                    datatype: 'json',
+                                    success: function(data) {
+                                        //var json = $.parseJSON(data);
+                                        //alert(json.status);
+                                        // alert("Login Successfully!");
+
+                                        $('#login-signup').hide();
+                                        $('#language_page').hide();
+                                        $('#dashboard').show();
+                                        $('#signup_font').hide();
+                                        $('#ims').attr('src', 'img/asi1on.png');
+                                        // $('#logo_new').hide();
+                                        $('.footer_nav').show();
+                                        localStorage.login = 1;
+                                        localStorage.email = email;
+                                        localStorage.name = name;
+                                        localStorage.phone_number = data.phone_number;
+                                        localStorage.caller_id_number = data.caller_id_number;
+                                        localStorage.customer_id = data.id;
+
+
+                                    },
+                                    error: function(jqXHR, exception, errorThrown) {
+                                        // alert(jqXHR.status);
+                                        //  alert(exception);
+                                        //  alert(errorThrown) 
+                                        alert("Email or Password is incorrect!");
+                                    }
+                                });
+
+                            });
+
+                        });
+
+                    }
+                });
+
+
+
+
+            },
+            function onError(error) {
+                console.error("Failed: ", error);
+            }
+        );
+
+
+    }
+
+    facebookConnectPlugin.login(["public_profile"], fbLoginSuccess,
+        function loginError(error) {
+            // alert(error)
+        }
+    );
+
+}
 
 
 
