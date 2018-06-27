@@ -2217,9 +2217,9 @@ function Myfunction(idl){
           console.error(error);
        });
 
-    /*
+   
      var db = null;
-        db = window.sqlitePlugin.openDatabase({name: "my.db", location: 'default'}); */
+        db = window.sqlitePlugin.openDatabase({name: "my.db", location: 'default'});
 	}
 
 
