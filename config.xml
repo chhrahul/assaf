@@ -63,6 +63,6 @@
    <plugin name="cordova-plugin-contacts-phonenumbers" spec="~0.0.10" />
 
     <plugin name="cordova-android-support-gradle-release" spec="~1.4.4" />
-   
+   <engine name="ios" spec="^4.5.4" />
     <engine name="android" spec="^7.0.0" />
 </widget>
