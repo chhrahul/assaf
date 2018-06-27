@@ -1,0 +1,13 @@
+ <plugin name="cordova-plugin-facebook4" spec="~2.1.0">
+        <variable name="APP_ID" value="2068144450174015" />
+        <variable name="APP_NAME" value="sociallogin" />
+    </plugin>
+    <plugin name="cordova-plugin-googleplus" spec="^5.3.0">
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.1044601568053-g9m4oikv1mips7nknkgcu7g6v8ete2jt" />
+    </plugin>
+
+git add .
+git commit -m "2"
+git push origin master
+chhrahul
+rock@*3205
