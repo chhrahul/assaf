@@ -1109,11 +1109,45 @@ function onDeviceReady() {
     //    window.plugins.googleplus.trySilentLogin(...);
 
 
-    
+    if (localStorage.login == 1) {
+
+        $('#ims').attr('src', 'img/asi1on.png');
+        var db = null;
+        db = window.sqlitePlugin.openDatabase({
+            name: "my.db",
+            location: 'default'
+        });
+        db.transaction(function(tx) {
+            tx.executeSql('SELECT * FROM footer_language', [], function(tx, results) {
+                var len = results.rows.length,
+                    i;
+                for (i = 0; i < len; i++) {
+                    // alert(results.rows.item(i).language_key );
+                    if (results.rows.item(i).language_key == 'call') {
+                        $('#footer_call').html(results.rows.item(i).language_value);
+                        //alert(results.rows.item(i).language_value)
+                    }
+
+                    if (results.rows.item(i).language_key == 'call_logs') {
+                        $('#footer_calllog').html(results.rows.item(i).language_value);
+                    }
+
+                    if (results.rows.item(i).language_key == 'contacts') {
+                        $('#footer_contacts').html(results.rows.item(i).language_value);
+                    }
+
+                    if (results.rows.item(i).language_key == 'settings') {
+                        $('#footer_settings').html(results.rows.item(i).language_value);
+                    }
+                }
+            });
+
+        });
+    }
 
 
 
-
+/*
     navigator.contactsPhoneNumbers.list(function(contacts) {
         jQuery("#list_contacts").html('');
         //console.log(contacts.length + ' contacts found');
@@ -1133,5 +1167,5 @@ function onDeviceReady() {
     db = window.sqlitePlugin.openDatabase({
         name: "my.db",
         location: 'default'
-    });
+    });*/
 }
