@@ -6,6 +6,10 @@
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.1044601568053-g9m4oikv1mips7nknkgcu7g6v8ete2jt" />
     </plugin>
 
+         <edit-config target="NSContactsUsageDescription" file="*-Info.plist" mode="merge">
+    <string>need contacts access to search contacts</string>
+</edit-config>
+
 git add .
 git commit -m "2"
 git push origin master
