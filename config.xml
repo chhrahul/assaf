@@ -23,11 +23,11 @@
             <string name="fb_app_name">sociallogin</string>
         </config-file>
     </platform>
-    <gap:config-file platform="ios" parent="NSContactsUsageDescription" overwrite="true">
+   <config-file platform="ios" parent="NSContactsUsageDescription" overwrite="true">
 
            <string>We are using your contact for adding them to your account .</string>
 
-        </gap:config-file>
+        </config-file>
     <platform name="ios">
     
         <allow-intent href="itms:*" />
